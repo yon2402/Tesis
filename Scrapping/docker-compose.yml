@@ -8,7 +8,7 @@ services:
       - ./data:/app/data
       - ./logs:/app/logs
     environment:
-      - DATABASE_URL=postgresql://user:pass@db:5432/nba
+      - DATABASE_URL=postgresql://postgres:admin@db:5432/nba_data
     depends_on:
       - db
     restart: unless-stopped
@@ -17,9 +17,9 @@ services:
     image: postgres:15
     container_name: nba_postgres
     environment:
-      - POSTGRES_DB=nba
-      - POSTGRES_USER=user
-      - POSTGRES_PASSWORD=pass
+      - POSTGRES_DB=nba_data
+      - POSTGRES_USER=postgres
+      - POSTGRES_PASSWORD=admin
     volumes:
       - postgres_data:/var/lib/postgresql/data
     ports:
